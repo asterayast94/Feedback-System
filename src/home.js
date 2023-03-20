@@ -1,8 +1,24 @@
-import React from "react";
+import React from 'react';
 // import React, { useState } from "react"
+// import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from './Navigation/Navbar.js';
+// import Table from 'react-bootstrap/Table';
 
 export default function (props) {
   let [authMode, setAuthMode] = React.useState('home');
+
+  function openGoats() {
+    // alert('clicked goats');
+    setAuthMode((authMode = 'goats'));
+    // location.replace('/goats');
+  }
+
+  function openHome() {
+    // alert('clicked goats');
+    setAuthMode((authMode = 'home'));
+    // location.replace('/goats');
+  }
 
   const changeAuthMode = (props) => {
     // if (props === 'signin') {
@@ -88,11 +104,17 @@ export default function (props) {
   } else if (authMode === 'home') {
     return (
       <div className="Auth-form-container">
-        <form className="Auth-form">
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Welcome Home Boy</h3>
-          </div>
-        </form>
+        <h3 className="Auth-form-title">Welcome Home Boy</h3>
+
+        <button onClick={openGoats}>Goats</button>
+      </div>
+    );
+  } else if (authMode === 'goats') {
+    return (
+      <div className="Auth-form-container">
+        <h3 className="Auth-form-title">Welcome Home Boy goats</h3>
+
+        <button onClick={openHome}>Home</button>
       </div>
     );
   }
